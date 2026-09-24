@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -153,8 +154,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   // Botón para ir al Registro
                   TextButton(
                     onPressed: () {
-                      // Aquí conectaremos la pantalla de registro
-                    },
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                            );
+                            },
                     style: TextButton.styleFrom(
                       foregroundColor: stuDark,
                     ),
