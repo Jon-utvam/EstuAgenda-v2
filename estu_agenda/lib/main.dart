@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
 import 'screens/materias_tareas_screen.dart'; 
+import 'screens/calendar_screen.dart';
 
 void main() {
   runApp(const MiApp());
@@ -18,7 +19,8 @@ class MiApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: MateriasTareasScreen(), 
+      home: const CalendarScreen(), //Linea provisional para probar la pantalla de Calendario
+      //home: MateriasTareasScreen(), //Linea provisional para probar la pantalla de Materias y Tareas
     );
   }
 }
