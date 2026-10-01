@@ -110,11 +110,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Ícono de libro (igual al login)
-                  Icon(
-                    Icons.menu_book,
-                    size: 80,
-                    color: stuVibrant,
+                  // Imagen reemplazando al icono antiguo
+                  Image.asset(
+                    'assets/logo.png',
+                    height: 80,
                   ),
                   const SizedBox(height: 24),
                   Text(
@@ -278,10 +277,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       DropdownMenuItem(
                         value: 'Femenino',
                         child: Text('Femenino'),
-                      ),
-                      DropdownMenuItem(
-                        value: 'No binario',
-                        child: Text('No binario'),
                       ),
                     ],
                     onChanged: (value) {

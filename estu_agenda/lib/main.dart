@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
+import 'screens/materias_tareas_screen.dart'; 
 
 void main() {
   runApp(const MiApp());
@@ -17,8 +18,7 @@ class MiApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      // Aquí le decimos que arranque directamente en el Login
-      home: const LoginScreen(), 
+      home: MateriasTareasScreen(), 
     );
   }
 }
