@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../controllers/tareas_controller.dart';
 
 class MateriasTareasScreen extends StatefulWidget {
@@ -27,18 +28,23 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
           appBar: AppBar(
             backgroundColor: bgColor,
             elevation: 0,
-            leading: Builder(
-              builder: (context) => IconButton(
-                icon: const Icon(Icons.menu, color: primaryTeal, size: 28),
-                onPressed: () => Scaffold.of(context).openDrawer(),
+            leading: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: primaryTeal,
+                size: 22,
               ),
+              tooltip: 'Volver al menú principal',
+              onPressed: () => Navigator.pop(
+                context,
+              ), // Regresa al Calendario / Menú Principal
             ),
             title: const Text(
-              'Stuagenda',
+              'Materias y Tareas',
               style: TextStyle(
                 color: primaryTeal,
                 fontWeight: FontWeight.bold,
-                fontSize: 22,
+                fontSize: 20,
               ),
             ),
             actions: [
@@ -57,7 +63,6 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
               ),
             ],
           ),
-
           drawer: Drawer(
             child: Container(
               color: primaryTeal,
@@ -69,15 +74,28 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Stuagenda', style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
+                        Text(
+                          'Stuagenda',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         SizedBox(height: 4),
-                        Text('Menú principal', style: TextStyle(color: Colors.white70)),
+                        Text(
+                          'Menú principal',
+                          style: TextStyle(color: Colors.white70),
+                        ),
                       ],
                     ),
                   ),
                   ListTile(
                     leading: Icon(Icons.book, color: Colors.white),
-                    title: Text('Materias y Tareas', style: TextStyle(color: Colors.white)),
+                    title: Text(
+                      'Materias y Tareas',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),
@@ -95,7 +113,11 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
                   children: [
                     _buildHeaderTitle(Icons.school_outlined, 'Materias'),
                     IconButton(
-                      icon: const Icon(Icons.add_circle_outline, color: primaryTeal, size: 26),
+                      icon: const Icon(
+                        Icons.add_circle_outline,
+                        color: primaryTeal,
+                        size: 26,
+                      ),
                       tooltip: 'Agregar nueva materia',
                       onPressed: () => _mostrarDialogoMateria(context),
                     ),
@@ -114,14 +136,26 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
                     ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: primaryTeal,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 8,
+                        ),
                       ),
                       onPressed: _controller.materiaSeleccionada == null
                           ? null
                           : () => _mostrarDialogoTarea(context),
-                      icon: const Icon(Icons.add, size: 18, color: Colors.white),
-                      label: const Text('Tarea', style: TextStyle(color: Colors.white, fontSize: 13)),
+                      icon: const Icon(
+                        Icons.add,
+                        size: 18,
+                        color: Colors.white,
+                      ),
+                      label: const Text(
+                        'Tarea',
+                        style: TextStyle(color: Colors.white, fontSize: 13),
+                      ),
                     ),
                   ],
                 ),
@@ -132,9 +166,7 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
                 const SizedBox(height: 12),
 
                 // 4. LISTA DE TAREAS
-                Expanded(
-                  child: _buildListaTareas(),
-                ),
+                Expanded(child: _buildListaTareas()),
 
                 // 5. LEYENDA
                 _buildLeyendaEstados(),
@@ -153,7 +185,11 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
         const SizedBox(width: 8),
         Text(
           title,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: textDark),
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: textDark,
+          ),
         ),
       ],
     );
@@ -190,7 +226,11 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
                 value: _controller.materiaSeleccionada,
                 isExpanded: true,
                 icon: const Icon(Icons.keyboard_arrow_down, color: primaryTeal),
-                style: const TextStyle(color: textDark, fontSize: 16, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                  color: textDark,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
                 items: _controller.materias.map((materia) {
                   return DropdownMenuItem<String>(
                     value: materia,
@@ -219,13 +259,21 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
               const PopupMenuItem(
                 value: 'editar',
                 child: Row(
-                  children: [Icon(Icons.edit, size: 18, color: textDark), SizedBox(width: 8), Text('Editar')],
+                  children: [
+                    Icon(Icons.edit, size: 18, color: textDark),
+                    SizedBox(width: 8),
+                    Text('Editar'),
+                  ],
                 ),
               ),
               const PopupMenuItem(
                 value: 'eliminar',
                 child: Row(
-                  children: [Icon(Icons.delete, size: 18, color: Colors.red), SizedBox(width: 8), Text('Eliminar', style: TextStyle(color: Colors.red))],
+                  children: [
+                    Icon(Icons.delete, size: 18, color: Colors.red),
+                    SizedBox(width: 8),
+                    Text('Eliminar', style: TextStyle(color: Colors.red)),
+                  ],
                 ),
               ),
             ],
@@ -270,7 +318,10 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
     if (_controller.materiaSeleccionada == null) {
       return Container(
         padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(color: cardColor, borderRadius: BorderRadius.circular(12)),
+        decoration: BoxDecoration(
+          color: cardColor,
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: const Center(
           child: Text(
             'Agrega o selecciona una materia para ver sus tareas.',
@@ -284,7 +335,10 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
     if (tareas.isEmpty) {
       return Container(
         padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(color: cardColor, borderRadius: BorderRadius.circular(12)),
+        decoration: BoxDecoration(
+          color: cardColor,
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: const Center(
           child: Text(
             'No hay tareas registradas para esta materia o clasificación.',
@@ -296,10 +350,14 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
     }
 
     return Container(
-      decoration: BoxDecoration(color: cardColor, borderRadius: BorderRadius.circular(12)),
+      decoration: BoxDecoration(
+        color: cardColor,
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: ListView.separated(
         itemCount: tareas.length,
-        separatorBuilder: (_, __) => const Divider(height: 1, color: Color(0xFFEEEEEE)),
+        separatorBuilder: (_, __) =>
+            const Divider(height: 1, color: Color(0xFFEEEEEE)),
         itemBuilder: (context, index) {
           final tarea = tareas[index];
           return ListTile(
@@ -313,17 +371,30 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
             ),
             title: Text(
               tarea.titulo,
-              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: textDark),
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: textDark,
+              ),
             ),
             trailing: PopupMenuButton<String>(
               tooltip: 'Opciones de tarea',
               onSelected: (opcion) {
                 if (opcion == 'pendiente') {
-                  _controller.cambiarEstadoTarea(tarea.id, EstadoTarea.pendiente);
+                  _controller.cambiarEstadoTarea(
+                    tarea.id,
+                    EstadoTarea.pendiente,
+                  );
                 } else if (opcion == 'enProceso') {
-                  _controller.cambiarEstadoTarea(tarea.id, EstadoTarea.enProceso);
+                  _controller.cambiarEstadoTarea(
+                    tarea.id,
+                    EstadoTarea.enProceso,
+                  );
                 } else if (opcion == 'terminada') {
-                  _controller.cambiarEstadoTarea(tarea.id, EstadoTarea.terminada);
+                  _controller.cambiarEstadoTarea(
+                    tarea.id,
+                    EstadoTarea.terminada,
+                  );
                 } else if (opcion == 'editar') {
                   _mostrarDialogoTarea(context, tareaAEditar: tarea);
                 } else if (opcion == 'eliminar') {
@@ -331,17 +402,38 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
                 }
               },
               itemBuilder: (context) => [
-                const PopupMenuItem(value: 'pendiente', child: Text('🔴 Estado: Pendiente')),
-                const PopupMenuItem(value: 'enProceso', child: Text('🟠 Estado: En proceso')),
-                const PopupMenuItem(value: 'terminada', child: Text('🟢 Estado: Terminada')),
+                const PopupMenuItem(
+                  value: 'pendiente',
+                  child: Text('🔴 Estado: Pendiente'),
+                ),
+                const PopupMenuItem(
+                  value: 'enProceso',
+                  child: Text('🟠 Estado: En proceso'),
+                ),
+                const PopupMenuItem(
+                  value: 'terminada',
+                  child: Text('🟢 Estado: Terminada'),
+                ),
                 const PopupMenuDivider(),
                 const PopupMenuItem(
                   value: 'editar',
-                  child: Row(children: [Icon(Icons.edit, size: 18), SizedBox(width: 8), Text('Editar nombre')]),
+                  child: Row(
+                    children: [
+                      Icon(Icons.edit, size: 18),
+                      SizedBox(width: 8),
+                      Text('Editar nombre'),
+                    ],
+                  ),
                 ),
                 const PopupMenuItem(
                   value: 'eliminar',
-                  child: Row(children: [Icon(Icons.delete, size: 18, color: Colors.red), SizedBox(width: 8), Text('Eliminar', style: TextStyle(color: Colors.red))]),
+                  child: Row(
+                    children: [
+                      Icon(Icons.delete, size: 18, color: Colors.red),
+                      SizedBox(width: 8),
+                      Text('Eliminar', style: TextStyle(color: Colors.red)),
+                    ],
+                  ),
                 ),
               ],
               child: const Icon(Icons.more_vert, color: Colors.grey),
@@ -374,7 +466,9 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
   // --- DIÁLOGOS ---
 
   void _mostrarDialogoMateria(BuildContext context, {bool esEdicion = false}) {
-    _inputController.text = esEdicion ? (_controller.materiaSeleccionada ?? '') : '';
+    _inputController.text = esEdicion
+        ? (_controller.materiaSeleccionada ?? '')
+        : '';
 
     showDialog(
       context: context,
@@ -413,7 +507,9 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('¿Eliminar materia?'),
-        content: Text('Se eliminará "${_controller.materiaSeleccionada}" y todas las tareas asociadas.'),
+        content: Text(
+          'Se eliminará "${_controller.materiaSeleccionada}" y todas las tareas asociadas.',
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -425,7 +521,10 @@ class _MateriasTareasScreenState extends State<MateriasTareasScreen> {
               _controller.eliminarMateriaActual();
               Navigator.pop(context);
             },
-            child: const Text('Eliminar', style: TextStyle(color: Colors.white)),
+            child: const Text(
+              'Eliminar',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ],
       ),
@@ -479,9 +578,16 @@ class _ItemLeyenda extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(width: 10, height: 10, decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
+        Container(
+          width: 10,
+          height: 10,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        ),
         const SizedBox(width: 4),
-        Text(texto, style: const TextStyle(fontSize: 11, color: Colors.black54)),
+        Text(
+          texto,
+          style: const TextStyle(fontSize: 11, color: Colors.black54),
+        ),
       ],
     );
   }

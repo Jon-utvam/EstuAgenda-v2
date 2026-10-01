@@ -16,11 +16,10 @@ class MiApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'EsTuAgenda',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1D969F)),
         useMaterial3: true,
       ),
-      home: const CalendarScreen(), //Linea provisional para probar la pantalla de Calendario
-      //home: MateriasTareasScreen(), //Linea provisional para probar la pantalla de Materias y Tareas
+      home: const LoginScreen(), // Ahora la app inicia correctamente en el Login
     );
   }
 }
