@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/models.dart';
 import 'materias_tareas_screen.dart';
 import 'login_screen.dart';
+import 'profile_screen.dart';
 
 
 class TareaConMateria {
@@ -364,7 +365,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
             if (index == 1 || index == 2) {
               _abrirPantallaMateriasYTareas();
             } else if (index == 3) {
-              _mostrarMensajeEnDesarrollo('Perfil');
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfileScreen()),
+              );
             }
           },
           type: BottomNavigationBarType.fixed,
