@@ -52,11 +52,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Ícono de libro actualizado con tu color vibrante
-                  Icon(
-                    Icons.menu_book, 
-                    size: 100,
-                    color: stuVibrant, 
+                  // Imagen reemplazando al icono antiguo
+                  Image.asset(
+                    'assets/logo.png',
+                    height: 100,
                   ),
                   const SizedBox(height: 32),
                   // Título principal
@@ -154,11 +153,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   // Botón para ir al Registro
                   TextButton(
                     onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const RegisterScreen()),
-                            );
-                            },
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                      );
+                    },
                     style: TextButton.styleFrom(
                       foregroundColor: stuDark,
                     ),
